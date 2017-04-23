@@ -1,0 +1,8 @@
+*~
+*#
+/vavedem-interfaces/target/
+/vavedem-persistence/target/
+/vavedem-models/target/
+/vavedem-services/target/
+/vavedem-restapi/target/
+

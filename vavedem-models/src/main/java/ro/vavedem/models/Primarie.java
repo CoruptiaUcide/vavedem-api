@@ -1,14 +1,29 @@
 package ro.vavedem.models;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  *
  * @author CoruptiaUcide
  */
-public class Primarie {
+public class Primarie implements Serializable {
 
+    private Long id;
     private String nume;
+    private Long codFiscal;
+    private Adresa adresa;
+    private String telefon;
+    private String email;
+    private Long populatie;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getNume() {
         return nume;
@@ -18,10 +33,55 @@ public class Primarie {
         this.nume = nume;
     }
 
+    public Long getCodFiscal() {
+        return codFiscal;
+    }
+
+    public void setCodFiscal(Long codFiscal) {
+        this.codFiscal = codFiscal;
+    }
+
+    public Adresa getAdresa() {
+        return adresa;
+    }
+
+    public void setAdresa(Adresa adresa) {
+        this.adresa = adresa;
+    }
+
+    public String getTelefon() {
+        return telefon;
+    }
+
+    public void setTelefon(String telefon) {
+        this.telefon = telefon;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Long getPopulatie() {
+        return populatie;
+    }
+
+    public void setPopulatie(Long populatie) {
+        this.populatie = populatie;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 97 * hash + Objects.hashCode(this.nume);
+        int hash = 3;
+        hash = 19 * hash + Objects.hashCode(this.id);
+        hash = 19 * hash + Objects.hashCode(this.nume);
+        hash = 19 * hash + Objects.hashCode(this.codFiscal);
+        hash = 19 * hash + Objects.hashCode(this.telefon);
+        hash = 19 * hash + Objects.hashCode(this.email);
+        hash = 19 * hash + Objects.hashCode(this.populatie);
         return hash;
     }
 
@@ -40,7 +100,23 @@ public class Primarie {
         if (!Objects.equals(this.nume, other.nume)) {
             return false;
         }
+        if (!Objects.equals(this.telefon, other.telefon)) {
+            return false;
+        }
+        if (!Objects.equals(this.email, other.email)) {
+            return false;
+        }
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.codFiscal, other.codFiscal)) {
+            return false;
+        }
+        if (!Objects.equals(this.populatie, other.populatie)) {
+            return false;
+        }
         return true;
     }
+
 
 }

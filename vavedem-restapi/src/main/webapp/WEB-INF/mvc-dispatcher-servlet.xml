@@ -12,7 +12,7 @@
 
  
     <mvc:annotation-driven />
-    <context:component-scan base-package="ro"/>
+    <context:component-scan base-package="ro.vavedem"/>
     
     <bean id="primarieService" class="ro.vavedem.services.PrimarieServiceImpl"></bean>
     <bean id="primarieRepository" class="ro.vavedem.persistence.repository.PrimarieRepositoryImpl"></bean>

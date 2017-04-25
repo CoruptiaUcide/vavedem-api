@@ -24,7 +24,9 @@
     <li><code># cp vavedem-restapi/target/vavedem.war {tomcat_home}/webapps/ </code></li>
 </ul>
 
+
  <p> Exemplu acces enpoint: <code> http://localhost:8080/vavedem/primarii </code> </p>
+
 
 
 

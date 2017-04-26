@@ -5,14 +5,15 @@
  */
 package ro.vavedem.models;
 
-import java.io.Serializable;
 import java.util.Objects;
 
 /**
+ * AdresaModel - modelul trimis la client in format JSON (aplicatie web,
+ * android, etc)
  *
  * @author CoruptiaUcide
  */
-public class Adresa implements Serializable {
+public class AdresaModel {
 
     private Long id;
     private String localitatea;
@@ -82,7 +83,7 @@ public class Adresa implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Adresa other = (Adresa) obj;
+        final AdresaModel other = (AdresaModel) obj;
         if (!Objects.equals(this.localitatea, other.localitatea)) {
             return false;
         }

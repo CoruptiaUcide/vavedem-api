@@ -53,6 +53,18 @@
           <version>4.3.8.RELEASE</version>
       </dependency>
       
+      <dependency>
+          <groupId>postgresql</groupId>
+          <artifactId>postgresql</artifactId>
+          <version>9.1-901.jdbc4</version>
+      </dependency>
+      
+      <dependency>
+          <groupId>javax.persistence</groupId>
+          <artifactId>persistence-api</artifactId>
+          <version>1.0.2</version>
+      </dependency>
+      
   </dependencies>
 </project>
 

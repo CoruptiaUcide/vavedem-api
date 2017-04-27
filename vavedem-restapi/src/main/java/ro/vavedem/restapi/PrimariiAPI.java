@@ -31,6 +31,8 @@ public class PrimariiAPI {
 
         logger.info("get adrese primarie  test");
 
+        primarieService.create();
+
         PrimarieModel p1 = new PrimarieModel();
         p1.setAdresa(new AdresaModel());
         p1.setCodFiscal(123L);

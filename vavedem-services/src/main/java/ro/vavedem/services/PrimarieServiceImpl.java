@@ -14,4 +14,10 @@ public class PrimarieServiceImpl
     private static final Logger logger = Logger.getLogger(PrimarieServiceImpl.class);
     @Autowired
     IRepository primarieRepository;
+
+    @Override
+    public void create() {
+        primarieRepository.save();
+    }
+
 }

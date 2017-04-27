@@ -6,4 +6,6 @@ package ro.vavedem.interfaces;
  */
 public interface PrimarieService {
 
+    public void create();
+
 }

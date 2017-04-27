@@ -6,5 +6,6 @@ package ro.vavedem.interfaces;
  */
 public interface IRepository {
 
+    public void save();
 
 }

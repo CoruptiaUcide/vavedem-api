@@ -22,6 +22,7 @@ import ro.vavedem.models.PrimarieModel;
 public class PrimariiAPI {
 
     private static final Logger logger = Logger.getLogger(PrimariiAPI.class);
+
     @Autowired
     private PrimarieService primarieService;
 
@@ -46,6 +47,7 @@ public class PrimariiAPI {
         l.add(p1);
         l.add(p1);
         l.add(p1);
+
         return new ResponseEntity(l, HttpStatus.OK);
     }
 

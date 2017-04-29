@@ -12,5 +12,4 @@ public final class ServiceUtil {
 
     private static final Logger logger = Logger.getLogger(ServiceUtil.class);
 
-
 }

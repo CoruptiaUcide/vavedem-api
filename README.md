@@ -15,7 +15,7 @@
 
 <h1>Dev</h1>
 
- <h2> Swagger: <code> http://localhost:8080/v2/api-docs </code> </h2>
+ <p> Swagger: <code> http://localhost:8080/v2/api-docs </code> </p>
 
  <p> Pentru a porni aplicatia sunt necesari urmatorii pasi: </p>
  

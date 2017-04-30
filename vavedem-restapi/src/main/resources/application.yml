@@ -1,0 +1,47 @@
+server:
+  port: 8080
+spring:
+    profile: dev
+    main:
+        web-environment: false
+    datasource:
+        url: jdbc:postgresql://localhost:5432/postgres?currentSchema=public
+        username: postgres
+        password: postgres
+        driver-class-name: org.postgresql.Driver
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        max-active: 5
+        max-pool: 10
+        max-idle: 0
+    jpa:
+        hibernate:
+            ddl-auto: create
+            temp:
+                use_jdbc_metadata_defaults: false
+        database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+---
+#
+#server:
+#  port: 8090
+#spring:
+#    profile: heroku
+#    main:
+#        web-environment: false
+#    datasource:
+#        url: jdbc:postgresql://ec2-54-163-228-58.compute-1.amazonaws.com:5432/dfvo2f9it4pmk9?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory
+#        username: ucokaucbriaged
+#        password:
+#        driver-class-name: org.postgresql.Driver
+#        dialect: org.hibernate.dialect.PostgreSQLDialect
+#        max-active: 5
+#        max-pool: 10
+#        max-idle: 0
+#    jpa:
+#        hibernate:
+#            ddl-auto: create
+#            temp:
+#                use_jdbc_metadata_defaults: false
+#        database-platform: org.hibernate.dialect.PostgreSQLDialect
+#
+#

@@ -1,58 +1,67 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
                              http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>ro.vavedem</groupId>
-    <artifactId>vavedem-parent</artifactId>
-    <version>1.0</version>
-  </parent>
-  <artifactId>persistence</artifactId>
-  <packaging>jar</packaging>
-  
-  <name>VaVedem Persistence</name>
-  
-  <build>
-    <pluginManagement>
-      <plugins>
-	<plugin>
-	  <groupId>org.apache.maven.plugins</groupId>
-	    <artifactId>maven-surefire-plugin</artifactId>
-	    <configuration>
-	      <testFailureIgnore>false</testFailureIgnore>
-	    </configuration>
-	</plugin>
-      </plugins>
-    </pluginManagement>
-  </build>
-  
-  <dependencies>
+    <modelVersion>4.0.0</modelVersion>
 
-      <dependency>
-          <groupId>ro.vavedem</groupId>
-          <artifactId>models</artifactId>
-          <version>1.0</version>
-      </dependency>
 
-      <dependency>
-          <groupId>ro.vavedem</groupId>
-          <artifactId>interfaces</artifactId>
-          <version>1.0</version>
-      </dependency>
-    
-      <dependency>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-context</artifactId>
-          <version>4.3.8.RELEASE</version>
-      </dependency>
-    
-      <dependency>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-core</artifactId>
-          <version>4.3.8.RELEASE</version>
-      </dependency>
-      
-  </dependencies>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.3.RELEASE</version>
+    </parent>
+
+    <artifactId>persistence</artifactId>
+    <packaging>jar</packaging>
+
+    <name>VaVedem Persistence</name>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <!--<plugin>-->
+                    <!--<groupId>org.apache.maven.plugins</groupId>-->
+                    <!--<artifactId>maven-surefire-plugin</artifactId>-->
+                    <!--<configuration>-->
+                        <!--<testFailureIgnore>false</testFailureIgnore>-->
+                    <!--</configuration>-->
+                <!--</plugin>-->
+                <!--<plugin>-->
+                    <!--<groupId>org.springframework.boot</groupId>-->
+                    <!--<artifactId>spring-boot-maven-plugin</artifactId>-->
+                <!--</plugin>-->
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <dependencies>
+        <!--modules START-->
+        <dependency>
+            <groupId>ro.vavedem</groupId>
+            <artifactId>models</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>ro.vavedem</groupId>
+            <artifactId>interfaces</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <!--modules END-->
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <version>1.5.3.RELEASE</version>
+        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.projectlombok</groupId>-->
+            <!--<artifactId>lombok</artifactId>-->
+            <!--<version>1.16.6</version>-->
+            <!--<scope>provided</scope>-->
+        <!--</dependency>-->
+
+
+    </dependencies>
 </project>
 

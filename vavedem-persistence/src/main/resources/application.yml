@@ -1,0 +1,23 @@
+# DO NOT COMMIT THE PASSWORDS
+server:
+  port: 8090
+spring:
+    main:
+        web-environment: false
+    datasource:
+        url: jdbc:postgresql://ec2-54-163-228-58.compute-1.amazonaws.com:5432/dfvo2f9it4pmk9?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory
+        username: ucokaucbriaged
+        password:
+        driver-class-name: org.postgresql.Driver
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        max-active: 5
+        max-pool: 10
+        max-idle: 0
+    jpa:
+        properties:
+            hibernate:
+                ddl-auto: update
+                temp:
+                    use_jdbc_metadata_defaults: false
+        database-platform: org.hibernate.dialect.PostgreSQLDialect
+

@@ -46,35 +46,25 @@
     </build>
 
     <dependencies>
-
         <dependency>
             <groupId>ro.vavedem</groupId>
             <artifactId>models</artifactId>
-            <version>1.0</version>
         </dependency>
 
         <dependency>
-            <groupId>ro.vavedem</groupId>
-            <artifactId>interfaces</artifactId>
-            <version>1.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>4.3.8.RELEASE</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-            <version>4.3.8.RELEASE</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>42.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.javax.persistence</groupId>
+            <artifactId>hibernate-jpa-2.1-api</artifactId>
+            <version>RELEASE</version>
         </dependency>
 
     </dependencies>

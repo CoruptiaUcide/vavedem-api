@@ -3,9 +3,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.3.RELEASE</version>
+        <groupId>ro.vavedem</groupId>
+        <artifactId>vavedem-parent</artifactId>
+        <version>1.0</version>
     </parent>
 
     <artifactId>restapi</artifactId>
@@ -13,76 +13,39 @@
 
     <name>VaVedem Rest API</name>
 
+    <build>
+        <finalName>vavedem</finalName>
+    </build>
+
     <dependencies>
         <dependency>
             <groupId>ro.vavedem</groupId>
+            <artifactId>services</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>ro.vavedem</groupId>
             <artifactId>interfaces</artifactId>
-            <version>1.0</version>
-        </dependency>
-        <dependency>
-            <groupId>ro.vavedem</groupId>
-            <artifactId>services</artifactId>
-            <version>1.0</version>
-        </dependency>
-        <dependency>
-            <groupId>ro.vavedem</groupId>
-            <artifactId>services</artifactId>
-            <version>1.0</version>
         </dependency>
 
-        <!--<dependency>-->
-        <!--<groupId>org.springframework</groupId>-->
-        <!--<artifactId>spring-core</artifactId>-->
-        <!--<version>4.3.8.RELEASE</version>-->
-        <!--</dependency>-->
-        <!---->
-        <!--<dependency>-->
-        <!--<groupId>org.springframework</groupId>-->
-        <!--<artifactId>spring-web</artifactId>-->
-        <!--<version>4.3.8.RELEASE</version>-->
-        <!--</dependency>-->
-        <!---->
-        <!--<dependency>-->
-        <!--<groupId>org.springframework</groupId>-->
-        <!--<artifactId>spring-webmvc</artifactId>-->
-        <!--<version>4.3.8.RELEASE</version>-->
-        <!--</dependency>-->
-
-        <!-- sprig security deps-->
-        <!--<dependency>-->
-        <!--<groupId>org.springframework.security</groupId>-->
-        <!--<artifactId>spring-security-web</artifactId>-->
-        <!--<version>4.1.3.RELEASE</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-        <!--<groupId>org.springframework.security</groupId>-->
-        <!--<artifactId>spring-security-config</artifactId>-->
-        <!--<version>4.1.3.RELEASE</version>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>1.5.3.RELEASE</version>
         </dependency>
-
-        <!--<dependency>-->
-            <!--<groupId>org.springframework.boot</groupId>-->
-            <!--<artifactId>spring-boot-starter-security</artifactId>-->
-            <!--<version>1.5.3.RELEASE</version>-->
-        <!--</dependency>-->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
-            <version>1.5.3.RELEASE</version>
-            <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-            <version>1.5.3.RELEASE</version>
         </dependency>
 
         <dependency>
@@ -102,53 +65,5 @@
         </dependency>
     </dependencies>
 
-    <!--<build>-->
-        <!--<finalName>vavedem</finalName>-->
-        <!--<plugins>-->
-            <!--<plugin>-->
-                <!--<groupId>org.springframework.boot</groupId>-->
-                <!--<artifactId>spring-boot-maven-plugin</artifactId>-->
-                <!--<version>1.5.3.RELEASE</version>-->
-                <!--&lt;!&ndash;<executions>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<execution>&ndash;&gt;-->
-                        <!--&lt;!&ndash;<goals>&ndash;&gt;-->
-                            <!--&lt;!&ndash;<goal>repackage</goal>&ndash;&gt;-->
-                        <!--&lt;!&ndash;</goals>&ndash;&gt;-->
-                    <!--&lt;!&ndash;</execution>&ndash;&gt;-->
-                <!--&lt;!&ndash;</executions>&ndash;&gt;-->
-            <!--</plugin>-->
-            <!--&lt;!&ndash;<plugin>&ndash;&gt;-->
-                <!--&lt;!&ndash;<groupId>org.apache.maven.plugins</groupId>&ndash;&gt;-->
-                <!--&lt;!&ndash;<artifactId>maven-surefire-plugin</artifactId>&ndash;&gt;-->
-                <!--&lt;!&ndash;<configuration>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<testFailureIgnore>false</testFailureIgnore>&ndash;&gt;-->
-                <!--&lt;!&ndash;</configuration>&ndash;&gt;-->
-            <!--&lt;!&ndash;</plugin>&ndash;&gt;-->
-
-            <!--&lt;!&ndash;<plugin>&ndash;&gt;-->
-                <!--&lt;!&ndash;<groupId>org.apache.maven.plugins</groupId>&ndash;&gt;-->
-                <!--&lt;!&ndash;<artifactId>maven-dependency-plugin</artifactId>&ndash;&gt;-->
-                <!--&lt;!&ndash;<version>2.3</version>&ndash;&gt;-->
-                <!--&lt;!&ndash;<executions>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<execution>&ndash;&gt;-->
-                        <!--&lt;!&ndash;<phase>package</phase>&ndash;&gt;-->
-                        <!--&lt;!&ndash;<goals>&ndash;&gt;-->
-                            <!--&lt;!&ndash;<goal>copy</goal>&ndash;&gt;-->
-                        <!--&lt;!&ndash;</goals>&ndash;&gt;-->
-                        <!--&lt;!&ndash;<configuration>&ndash;&gt;-->
-                            <!--&lt;!&ndash;<artifactItems>&ndash;&gt;-->
-                                <!--&lt;!&ndash;<artifactItem>&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<groupId>com.github.jsimone</groupId>&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<artifactId>webapp-runner</artifactId>&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<version>8.0.33.0</version>&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<destFileName>webapp-runner.jar</destFileName>&ndash;&gt;-->
-                                <!--&lt;!&ndash;</artifactItem>&ndash;&gt;-->
-                            <!--&lt;!&ndash;</artifactItems>&ndash;&gt;-->
-                        <!--&lt;!&ndash;</configuration>&ndash;&gt;-->
-                    <!--&lt;!&ndash;</execution>&ndash;&gt;-->
-                <!--&lt;!&ndash;</executions>&ndash;&gt;-->
-            <!--&lt;!&ndash;</plugin>&ndash;&gt;-->
-        <!--</plugins>-->
-    <!--</build>-->
 
 </project>

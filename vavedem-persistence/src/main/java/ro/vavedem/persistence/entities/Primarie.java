@@ -1,18 +1,28 @@
-package ro.vavedem.models;
+package ro.vavedem.persistence.entities;
 
 import java.io.Serializable;
 import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import ro.vavedem.models.AdresaModel;
 
 /**
  *
  * @author CoruptiaUcide
  */
+@Entity
+@Table(name = "administratie")
 public class Primarie implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nume;
     private Long codFiscal;
-    private Adresa adresa;
+    private AdresaModel adresa;
     private String telefon;
     private String email;
     private Long populatie;
@@ -41,11 +51,11 @@ public class Primarie implements Serializable {
         this.codFiscal = codFiscal;
     }
 
-    public Adresa getAdresa() {
+    public AdresaModel getAdresa() {
         return adresa;
     }
 
-    public void setAdresa(Adresa adresa) {
+    public void setAdresa(AdresaModel adresa) {
         this.adresa = adresa;
     }
 
@@ -117,6 +127,5 @@ public class Primarie implements Serializable {
         }
         return true;
     }
-
 
 }

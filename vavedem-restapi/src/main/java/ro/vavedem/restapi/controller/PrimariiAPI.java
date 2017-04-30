@@ -1,5 +1,6 @@
 package ro.vavedem.restapi.controller;
 
+import io.swagger.annotations.ApiOperation;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,6 +25,7 @@ public class PrimariiAPI {
     private Service<PrimarieModel> primarieService;
 
 
+    @ApiOperation(value = "Intoarce lista cu toate primariile.", tags = {"primarie"})
     @RequestMapping(value = {"/primarii"}, method = {RequestMethod.GET})
     @ResponseBody
     public ResponseEntity<List<PrimarieModel>> getPrimarii() {
@@ -33,7 +35,7 @@ public class PrimariiAPI {
         return new ResponseEntity<List<PrimarieModel>>(primaries, HttpStatus.OK);
     }
 
-
+    @ApiOperation(value = "Creaza o noua intrare in baza de date.", tags = {"primarie"})
     @RequestMapping(value = {"/primarii"}, method = {RequestMethod.POST}, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<PrimarieModel> createPrimarie(@RequestBody PrimarieModel model) {
@@ -43,6 +45,7 @@ public class PrimariiAPI {
         return new ResponseEntity<PrimarieModel>(saved, HttpStatus.OK);
     }
 
+    @ApiOperation(value = "Intoarce detaliile primarii cu id-ul dat.", tags = {"primarie"})
     @RequestMapping(value = {"/primarii/{id}"}, method = {RequestMethod.GET})
     @ResponseBody
     public ResponseEntity<PrimarieModel> getDetaliiPrimarie(@PathVariable("id") Long id) {

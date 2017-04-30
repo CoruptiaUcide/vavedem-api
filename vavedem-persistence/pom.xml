@@ -3,16 +3,18 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
                              http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <parent>
         <groupId>ro.vavedem</groupId>
         <artifactId>vavedem-parent</artifactId>
         <version>1.0</version>
     </parent>
+
     <artifactId>persistence</artifactId>
     <packaging>jar</packaging>
-  
+
     <name>VaVedem Persistence</name>
-  
+
     <build>
         <pluginManagement>
             <plugins>
@@ -23,10 +25,26 @@
                         <testFailureIgnore>false</testFailureIgnore>
                     </configuration>
                 </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>1.8</source>
+                        <target>1.8</target>
+                        <annotationProcessorPaths>
+                            <path>
+                                <groupId>org.projectlombok</groupId>
+                                <artifactId>lombok</artifactId>
+                                <version>1.16.12</version>
+                            </path>
+                        </annotationProcessorPaths>
+                    </configuration>
+                </plugin>
+
             </plugins>
         </pluginManagement>
     </build>
-  
+
     <dependencies>
 
         <dependency>
@@ -40,64 +58,25 @@
             <artifactId>interfaces</artifactId>
             <version>1.0</version>
         </dependency>
-    
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
             <version>4.3.8.RELEASE</version>
         </dependency>
-    
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
             <version>4.3.8.RELEASE</version>
         </dependency>
-      
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-orm</artifactId>
-            <version>4.3.8.RELEASE</version>
-        </dependency>
-      
-      
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-jdbc</artifactId>
-            <version>4.3.8.RELEASE</version>
-        </dependency>
-      
-      
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-tx</artifactId>
-            <version>4.3.8.RELEASE</version>
-        </dependency>
-      
-      
-        <dependency>
-            <groupId>postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>9.1-901.jdbc4</version>
-        </dependency>
-      
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>3.5.1-Final</version>
-        </dependency>
 
         <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-entitymanager</artifactId>
-            <version>3.5.1-Final</version>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.0.0</version>
         </dependency>
-      
-        <dependency>
-            <groupId>org.hibernate.javax.persistence</groupId>
-            <artifactId>hibernate-jpa-2.0-api</artifactId>
-            <version>1.0.1.Final</version>
-        </dependency>
-      
+
     </dependencies>
 </project>
 

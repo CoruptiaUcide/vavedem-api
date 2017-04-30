@@ -13,11 +13,22 @@
 </ul>
 
 
-<h2>Dev</h2>
+<h1>Dev</h1>
 
+ <h2> Swagger: <code> http://localhost:8080/v2/api-docs </code> </h2>
 
  <p> Pentru a porni aplicatia sunt necesari urmatorii pasi: </p>
  
+ 
+ <p> Setari pentru conexiune la postgres pe localhost: </p>
+ <ul>
+    <li><code> username=postgres</code></li>
+    <li><code> password=postgres</code></li>
+    <li><code> host=localhost</code></li>
+    <li><code> port=5432</code></li>
+    <li><code> database=postgres</code></li>
+</ul>
+
 
 <ul>
     <li><code># cd va-vedem-api </code></li>
@@ -26,7 +37,7 @@
 </ul>
 
 
- <p> Exemplu acces enpoint: <code> http://localhost:8080/vavedem/primarii </code> </p>
+ 
 
 
 

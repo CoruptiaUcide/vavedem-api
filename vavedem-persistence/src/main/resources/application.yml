@@ -7,7 +7,7 @@ spring:
     datasource:
         url: jdbc:postgresql://ec2-54-163-228-58.compute-1.amazonaws.com:5432/dfvo2f9it4pmk9?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory
         username: ucokaucbriaged
-        password:
+        password: MiL-tB6turQdPKbGwjqrBlFLXP
         driver-class-name: org.postgresql.Driver
         dialect: org.hibernate.dialect.PostgreSQLDialect
         max-active: 5
@@ -20,4 +20,6 @@ spring:
                 temp:
                     use_jdbc_metadata_defaults: false
         database-platform: org.hibernate.dialect.PostgreSQLDialect
-
+    queries:
+        users-query: select username, password from users where username=?
+        roles-query: select u.username, r.role from users u inner join user_role ur on(u.id=ur.user_id) inner join role r on(ur.role_id=r.id) where u.username=?

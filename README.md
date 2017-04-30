@@ -5,10 +5,13 @@
 
 
 <ul>
-    <li><code><a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">jdk</a></code> incepand cu versiunea 8</li>
+
+    <li><code><a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">jdk</a></code> incepand cu versiunea 7</li>
     <li><code><a href="https://maven.apache.org/index.html">maven</a></code> - java build tool</li>
-    <li><code><a href="https://tomcat.apache.org/download-80.cgi">apache tomcat</a></code> - webserver </li>  
-    
+    <li><code><a href="https://tomcat.apache.org/download-80.cgi">apache tomcat</a></code> - webserver </li>
+    <li><code><a href="https://www.postgresql.org/download/">postgres</a> | sudo pacman -S postgresql pgadmin3 | sudo apt-get install postgresql pgadmin3</code> - baza de date </li>  
+    <li><code> sudo pacman -S tzdata </code> *linux only </li> 
+
 </ul>
 
 

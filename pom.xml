@@ -22,6 +22,7 @@
         <module>vavedem-persistence</module>
         <module>vavedem-restapi</module>
         <module>vavedem-services</module>
+        <module>vavedem-common</module>
     </modules>
 
     <repositories>
@@ -106,6 +107,12 @@
             <dependency>
                 <groupId>ro.vavedem</groupId>
                 <artifactId>services</artifactId>
+                <version>1.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>ro.vavedem</groupId>
+                <artifactId>common</artifactId>
                 <version>1.0</version>
             </dependency>
 

@@ -3,6 +3,7 @@ package ro.vavedem.persistence.entities;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
@@ -18,14 +19,18 @@ public class Adresa implements Serializable {
     private Long id;
 
     @Column
+    @NotNull
     private String localitatea;
 
     @Column
+    @NotNull
     private String strada;
 
     @Column
+    @NotNull
     private Integer nr;
 
     @Column
+    @NotNull
     private Long codPostal;
 }

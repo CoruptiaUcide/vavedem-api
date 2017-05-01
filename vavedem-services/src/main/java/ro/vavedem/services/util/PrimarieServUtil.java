@@ -6,17 +6,16 @@ import ro.vavedem.models.AdresaModel;
 import ro.vavedem.models.PrimarieModel;
 import ro.vavedem.persistence.entities.Adresa;
 import ro.vavedem.persistence.entities.Primarie;
-import ro.vavedem.exceptions.VaVedemApiException;
 
 /**
  *
  * @author CoruptiaUcide
  */
-public class ServiceUtil {
+public final class PrimarieServUtil {
 
-    private ServiceUtil() {}
+    private PrimarieServUtil() {}
 
-    private static final Logger logger = Logger.getLogger(ServiceUtil.class);
+    private static final Logger logger = Logger.getLogger(PrimarieServUtil.class);
 
 
     public static Primarie convertToEntity(PrimarieModel model) throws VaVedemConversionException {

@@ -2,7 +2,6 @@ package ro.vavedem.services;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import ro.vavedem.exceptions.VaVedemConversionException;
 import ro.vavedem.exceptions.VaVedemNotFoundException;
 import ro.vavedem.exceptions.VaVedemPersistenceException;
 import ro.vavedem.interfaces.Service;
@@ -10,7 +9,7 @@ import ro.vavedem.models.PrimarieModel;
 import ro.vavedem.persistence.entities.Primarie;
 import ro.vavedem.persistence.repository.PrimarieRepository;
 import ro.vavedem.exceptions.VaVedemApiException;
-import ro.vavedem.services.util.ServiceUtil;
+import ro.vavedem.services.util.PrimarieServUtil;
 
 import javax.transaction.NotSupportedException;
 import java.util.ArrayList;
@@ -30,7 +29,7 @@ public class PrimarieService implements Service<PrimarieModel> {
         if(null == entity){
             throw new VaVedemNotFoundException("Not found any record with id: " + id);
         }
-        return ServiceUtil.convertToModel(entity);
+        return PrimarieServUtil.convertToModel(entity);
     }
 
     @Override
@@ -39,7 +38,7 @@ public class PrimarieService implements Service<PrimarieModel> {
         final List<Primarie> entities = repository.findAll();
 
         for(Primarie e : entities){
-            models.add(ServiceUtil.convertToModel(e));
+            models.add(PrimarieServUtil.convertToModel(e));
         }
         return models;
 
@@ -47,13 +46,13 @@ public class PrimarieService implements Service<PrimarieModel> {
 
     @Override
     public PrimarieModel save(final PrimarieModel model) throws VaVedemApiException{
-        final Primarie p = ServiceUtil.convertToEntity(model);
+        final Primarie p = PrimarieServUtil.convertToEntity(model);
         final Primarie saved = repository.save(p);
 
         if(null == saved){
             throw new VaVedemPersistenceException("Fail to save the entity.");
         }
-        PrimarieModel result = ServiceUtil.convertToModel(saved);
+        PrimarieModel result = PrimarieServUtil.convertToModel(saved);
         return result;
 
     }

@@ -1,10 +1,10 @@
 package ro.vavedem.persistence.entities;
 
 import lombok.Data;
-import ro.vavedem.models.PrimarieModel;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 /**
  * @author CoruptiaUcide
@@ -12,14 +12,14 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name="localitate")
 @Data
-public class Localitate {
+public class Localitate implements Serializable {
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;
         @NotNull
         private String nume;
-        private PrimarieModel unitateAdministrativa;
+        private Primarie unitateAdministrativa;
         @NotNull
         private Integer tip;
 }

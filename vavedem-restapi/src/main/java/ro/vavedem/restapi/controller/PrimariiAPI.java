@@ -64,6 +64,19 @@ public class PrimariiAPI {
 
         UserAccount uu = userRepository.findByUsername("vavedem");
 
+        Adresa adresa = new Adresa();
+        adresa.setCodPostal("A1dsa");
+        adresa.setLocalitatea("ad1sad");
+        adresa.setNr(1123);
+        adresa.setStrada("asd1sa");
+
+        adresaService.save(adresa);
+
+
+
+
+
+
         return new ResponseEntity<List<Primarie>>(primaries, HttpStatus.OK);
     }
 

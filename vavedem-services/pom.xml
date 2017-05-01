@@ -32,33 +32,22 @@
       <dependency>
           <groupId>ro.vavedem</groupId>
           <artifactId>models</artifactId>
-          <version>1.0</version>
+      </dependency>
+
+      <dependency>
+          <groupId>ro.vavedem</groupId>
+          <artifactId>common</artifactId>
       </dependency>
 
       <dependency>
           <groupId>ro.vavedem</groupId>
           <artifactId>interfaces</artifactId>
-          <version>1.0</version>
       </dependency>
       
         <dependency>
           <groupId>ro.vavedem</groupId>
           <artifactId>persistence</artifactId>
-          <version>1.0</version>
       </dependency>
-    
-      <dependency>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-context</artifactId>
-          <version>4.3.8.RELEASE</version>
-      </dependency>
-    
-      <dependency>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-core</artifactId>
-          <version>4.3.8.RELEASE</version>
-      </dependency>
-
     
   </dependencies>
 </project>

@@ -5,4 +5,7 @@
 /vavedem-models/target/
 /vavedem-services/target/
 /vavedem-restapi/target/
-
+/vavedem-common/target/
+*.iml
+*/**/*.iml
+*.idea

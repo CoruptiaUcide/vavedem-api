@@ -1,0 +1,201 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Api to access romanian institutions public general available contact details.",
+    "version": "v0.0.1",
+    "title": "VaVedem API",
+    "termsOfService": "Terms of service",
+    "contact": {
+      "name": "email@coruptiaucide.ro"
+    },
+    "license": {
+      "name": "GNU LESSER GENERAL PUBLIC LICENSE",
+      "url": "https://github.com/CoruptiaUcide/va-vedem-api/blob/master/LICENSE"
+    }
+  },
+  "host": "localhost:8080",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "primarii-api",
+      "description": "Primarii API"
+    }
+  ],
+  "paths": {
+    "/primarii": {
+      "get": {
+        "tags": [
+          "primarie"
+        ],
+        "summary": "Intoarce lista cu toate primariile.",
+        "operationId": "getPrimariiUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/PrimarieModel"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "primarie"
+        ],
+        "summary": "Creaza o noua intrare in baza de date.",
+        "operationId": "createPrimarieUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "model",
+            "description": "model",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PrimarieModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/PrimarieModel"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/primarii/{id}": {
+      "get": {
+        "tags": [
+          "primarie"
+        ],
+        "summary": "Intoarce detaliile primarii cu id-ul dat.",
+        "operationId": "getDetaliiPrimarieUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/PrimarieModel"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "AdresaModel": {
+      "type": "object",
+      "properties": {
+        "codPostal": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "localitatea": {
+          "type": "string"
+        },
+        "nr": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "strada": {
+          "type": "string"
+        }
+      }
+    },
+    "PrimarieModel": {
+      "type": "object",
+      "properties": {
+        "adresa": {
+          "$ref": "#/definitions/AdresaModel"
+        },
+        "codFiscal": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "email": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "nume": {
+          "type": "string"
+        },
+        "populatie": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "telefon": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

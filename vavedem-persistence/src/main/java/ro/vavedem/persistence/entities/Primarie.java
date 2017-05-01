@@ -3,6 +3,7 @@ package ro.vavedem.persistence.entities;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
@@ -10,7 +11,7 @@ import java.io.Serializable;
 * @author CoruptiaUcide
 */
 @Entity
-@Table
+@Table(name="primarie")
 @Data
 public class Primarie implements Serializable {
 
@@ -19,21 +20,27 @@ public class Primarie implements Serializable {
     private Long id;
 
     @Column
+    @NotNull
     private String nume;
 
     @Column
+    @NotNull
     private Long codFiscal;
 
-    // todo link @OnetoOne with Adresa entity
     @Column
-    private Long adresa;
-
-    @Column
+    @NotNull
     private String telefon;
 
     @Column
+    @NotNull
     private String email;
 
     @Column
+    @NotNull
     private Long populatie;
+
+    @NotNull
+    @OneToOne(cascade={CascadeType.ALL})
+    @JoinColumn(name = "`Id_Adresa`")
+    private Adresa adresa;
 }

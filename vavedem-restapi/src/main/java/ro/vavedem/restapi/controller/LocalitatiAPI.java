@@ -12,30 +12,30 @@ import ro.vavedem.exceptions.VaVedemApiException;
 import ro.vavedem.exceptions.VaVedemConversionException;
 import ro.vavedem.exceptions.VaVedemNotFoundException;
 import ro.vavedem.interfaces.Service;
-import ro.vavedem.models.PrimarieModel;
+import ro.vavedem.models.LocalitateModel;
 
 import javax.validation.Valid;
 import java.util.List;
 
 @Controller
-public class PrimariiAPI {
+public class LocalitatiAPI {
 
-    private static final Logger logger = Logger.getLogger(PrimariiAPI.class);
+    private static final Logger logger = Logger.getLogger(LocalitatiAPI.class);
     public static final String EROARE_INTERNA_INCERCATI_MAI_TARZIU = "Eroare interna! Incercati mai tarziu.";
     public static final String ASIGURATIVA_CA_DATELE_INTRODUSE_SUNT_CORECTE = "Asigurativa ca datele introduse sunt corecte.";
 
     @Autowired
-    private Service<PrimarieModel> primarieService;
+    private Service<LocalitateModel> localitateService;
 
 
-    @ApiOperation(value = "Intoarce lista cu toate primariile.", tags = {"primarie"})
-    @RequestMapping(value = {"/primarii"}, method = {RequestMethod.GET})
+    @ApiOperation(value = "Intoarce lista cu toate localitatiile.", tags = {"localitate"})
+    @RequestMapping(value = {"/localitati"}, method = {RequestMethod.GET})
     @ResponseBody
-    public ResponseEntity<List<PrimarieModel>> getPrimarii() {
-        logger.info("get lista primarii");
-        List<PrimarieModel> primaries = null;
+    public ResponseEntity<List<LocalitateModel>> getLocalitati() {
+        logger.info("get lista localitati");
+        List<LocalitateModel> localitati = null;
         try {
-            primaries = primarieService.findAll();
+            localitati = localitateService.findAll();
         } catch (VaVedemApiException e) {
             if(e instanceof VaVedemConversionException){
                 logger.info(e.getMessage());
@@ -46,17 +46,17 @@ public class PrimariiAPI {
             }
         }
 
-        return new ResponseEntity<List<PrimarieModel>>(primaries, HttpStatus.OK);
+        return new ResponseEntity<List<LocalitateModel>>(localitati, HttpStatus.OK);
     }
 
-    @ApiOperation(value = "Creaza o noua intrare in baza de date.", tags = {"primarie"})
-    @RequestMapping(value = {"/primarii"}, method = {RequestMethod.POST}, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ApiOperation(value = "Creaza o noua intrare in baza de date.", tags = {"localitate"})
+    @RequestMapping(value = {"/localitati"}, method = {RequestMethod.POST}, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public ResponseEntity<PrimarieModel> createPrimarie(@RequestBody @Valid PrimarieModel model) {
-        logger.info("post primarie: JSON: " + model.toString());
-        PrimarieModel saved = null;
+    public ResponseEntity<LocalitateModel> createLocalitate(@RequestBody @Valid LocalitateModel model) {
+        logger.info("post localitate: JSON: " + model.toString());
+        LocalitateModel saved = null;
         try {
-            saved = primarieService.save(model);
+            saved = localitateService.save(model);
         } catch (VaVedemApiException e) {
             if(e instanceof VaVedemConversionException){
                 logger.info(e.getMessage());
@@ -67,18 +67,18 @@ public class PrimariiAPI {
             }
         }
 
-        return new ResponseEntity<PrimarieModel>(saved, HttpStatus.OK);
+        return new ResponseEntity<LocalitateModel>(saved, HttpStatus.OK);
     }
 
-    @ApiOperation(value = "Intoarce detaliile primarii cu id-ul dat.", tags = {"primarie"})
-    @RequestMapping(value = {"/primarii/{id}"}, method = {RequestMethod.GET})
+    @ApiOperation(value = "Intoarce detaliile localitatii cu id-ul dat.", tags = {"localitate"})
+    @RequestMapping(value = {"/localitati/{id}"}, method = {RequestMethod.GET})
     @ResponseBody
-    public ResponseEntity<PrimarieModel> getDetaliiPrimarie(@PathVariable("id") Long id) {
-        logger.info("get detalii primarie: " + id);
+    public ResponseEntity<LocalitateModel> getDetaliiLocalitate(@PathVariable("id") Long id) {
+        logger.info("get detalii localitate: " + id);
 
-        PrimarieModel model = null;
+        LocalitateModel model = null;
         try {
-            model = primarieService.findOne(id);
+            model = localitateService.findOne(id);
         } catch (VaVedemApiException e) {
             if(e instanceof VaVedemNotFoundException){
                 logger.info(e.getMessage());
@@ -92,6 +92,6 @@ public class PrimariiAPI {
             }
         }
 
-        return new ResponseEntity<PrimarieModel>(model, HttpStatus.OK);
+        return new ResponseEntity<LocalitateModel>(model, HttpStatus.OK);
     }
 }

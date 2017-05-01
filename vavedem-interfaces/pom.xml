@@ -30,10 +30,15 @@
     </build>
 
     <dependencies>
+
         <dependency>
             <groupId>ro.vavedem</groupId>
-            <artifactId>models</artifactId>
-            <version>1.0</version>
+            <artifactId>common</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.transaction</groupId>
+            <artifactId>javax.transaction-api</artifactId>
         </dependency>
     </dependencies>
 </project>

@@ -1,7 +1,20 @@
+# Properties applied for any profile
+
 server:
-  port: 8080
+    port: 8080
+
 spring:
-    profile: dev
+    profiles:
+      active: dev-test
+    queries:
+      users-query: select username, password from users where username=?
+      roles-query: select u.username, r.role from users u inner join user_role ur on(u.id=ur.user_id) inner join role r on(ur.role_id=r.id) where u.username=?
+---
+
+# Development profile
+
+spring:
+    profiles: dev
     main:
         web-environment: false
     datasource:
@@ -15,33 +28,65 @@ spring:
         max-idle: 0
     jpa:
         hibernate:
-            ddl-auto: create
-            temp:
-                use_jdbc_metadata_defaults: false
+            ddl-auto: create  # this will create the DB schema locally
+        properties:   # this needs to be placed here because that is how some of the Hibernate props are read
+            hibernate:
+                temp:
+                    use_jdbc_metadata_defaults: false
+        database-platform: org.hibernate.dialect.PostgreSQLDialect
+    queries:
+        users-query: select username, password from users where username=?
+        roles-query: select u.username, r.role from users u inner join user_role ur on(u.id=ur.user_id) inner join role r on(ur.role_id=r.id) where u.username=?
+---
+
+# Heroku profile - current test
+
+server:
+    port: 8090
+
+spring:
+    profile: heroku
+    main:
+        web-environment: false
+    datasource:
+        url: jdbc:postgresql://ec2-54-163-228-58.compute-1.amazonaws.com:5432/dfvo2f9it4pmk9?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory
+        username: ucokaucbriaged
+        password:
+        driver-class-name: org.postgresql.Driver
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        max-active: 5
+        max-pool: 10
+        max-idle: 0
+    jpa:
+        properties:       # do not user ddl-auto: create/update on a shared DB
+            hibernate:
+                temp:
+                    use_jdbc_metadata_defaults: false
         database-platform: org.hibernate.dialect.PostgreSQLDialect
 
+
 ---
-#
-#server:
-#  port: 8090
-#spring:
-#    profile: heroku
-#    main:
-#        web-environment: false
-#    datasource:
-#        url: jdbc:postgresql://ec2-54-163-228-58.compute-1.amazonaws.com:5432/dfvo2f9it4pmk9?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory
-#        username: ucokaucbriaged
-#        password:
-#        driver-class-name: org.postgresql.Driver
-#        dialect: org.hibernate.dialect.PostgreSQLDialect
-#        max-active: 5
-#        max-pool: 10
-#        max-idle: 0
-#    jpa:
-#        hibernate:
-#            ddl-auto: create
-#            temp:
-#                use_jdbc_metadata_defaults: false
-#        database-platform: org.hibernate.dialect.PostgreSQLDialect
-#
-#
+# Test profile
+
+server:
+    port: 8090
+
+spring:
+    profile: test
+    main:
+        web-environment: false
+    datasource:
+        url: jdbc:postgresql://ec2-54-16123-228-58.compute-1.amazonaws.com:5432/dfvo2f9i123t4pmk9?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory
+        username: ucokau123cbriaged
+        password:
+        driver-class-name: org.postgresql.Driver
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        max-active: 5
+        max-pool: 10
+        max-idle: 0
+    jpa:
+        properties:
+            hibernate:
+                temp:
+                    use_jdbc_metadata_defaults: false
+        database-platform: org.hibernate.dialect.PostgreSQLDialect

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import ro.vavedem.exceptions.VaVedemApiException;
 import ro.vavedem.exceptions.VaVedemConversionException;
 import ro.vavedem.exceptions.VaVedemNotFoundException;
-import ro.vavedem.interfaces.Service;
+import ro.vavedem.interfaces.database.Service;
 import ro.vavedem.models.PrimarieModel;
 import ro.vavedem.persistence.repository.RoleRepository;
 import ro.vavedem.persistence.repository.UserRepository;

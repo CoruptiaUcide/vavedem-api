@@ -1,14 +1,15 @@
-package ro.vavedem.persistence.service;
+package ro.vavedem.persistence.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ro.vavedem.persistence.entities.Primarie;
 import ro.vavedem.persistence.repository.PrimarieCRUDRepository;
+import ro.vavedem.persistence.service.PrimarieService;
 
 import java.util.List;
 
 @Service
-public class PrimarieV2ServiceImpl implements PrimarieV2Service {
+public class PrimarieServiceImpl implements PrimarieService {
 
     @Autowired
     private PrimarieCRUDRepository repository;
@@ -18,6 +19,7 @@ public class PrimarieV2ServiceImpl implements PrimarieV2Service {
         return repository.findOne(id);
     }
 
+    // TODO this should be restricted to just 50 or 100
     @Override
     public List<Primarie> findAll() {
         return repository.findAll();

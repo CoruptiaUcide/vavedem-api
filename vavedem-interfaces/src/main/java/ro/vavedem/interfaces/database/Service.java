@@ -1,6 +1,4 @@
-package ro.vavedem.interfaces;
-
-
+package ro.vavedem.interfaces.database;
 
 import ro.vavedem.exceptions.VaVedemApiException;
 

@@ -1,4 +1,4 @@
-package ro.vavedem.interfaces;
+package ro.vavedem.interfaces.database;
 
 /**
  *

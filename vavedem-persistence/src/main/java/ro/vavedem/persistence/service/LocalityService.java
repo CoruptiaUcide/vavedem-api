@@ -1,16 +1,14 @@
-package ro.vavedem.persistence.repository;
+package ro.vavedem.persistence.service;
 
-import org.springframework.data.repository.CrudRepository;
 import ro.vavedem.persistence.entities.Localitate;
 
 import java.util.List;
 
-public interface LocalitateRepository extends CrudRepository<Localitate, Long> {
+public interface LocalityService {
 
     Localitate findOne(Long id);
 
     List<Localitate> findAll();
 
     Localitate save(Localitate primarie);
-
 }

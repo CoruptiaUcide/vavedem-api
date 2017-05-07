@@ -5,7 +5,6 @@ package ro.vavedem.exceptions;
  */
 public class VaVedemConversionException extends VaVedemApiException {
 
-
     public VaVedemConversionException(String message) {
         super(message);
     }

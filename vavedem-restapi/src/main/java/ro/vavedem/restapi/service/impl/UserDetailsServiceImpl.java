@@ -1,4 +1,4 @@
-package ro.vavedem.restapi.service;
+package ro.vavedem.restapi.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;

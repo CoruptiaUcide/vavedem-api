@@ -30,10 +30,14 @@
     </build>
 
     <dependencies>
-
         <dependency>
             <groupId>ro.vavedem</groupId>
             <artifactId>common</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>ro.vavedem</groupId>
+            <artifactId>models</artifactId>
         </dependency>
 
         <dependency>

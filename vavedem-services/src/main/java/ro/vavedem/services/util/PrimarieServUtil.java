@@ -7,19 +7,28 @@ import ro.vavedem.models.PrimarieModel;
 import ro.vavedem.persistence.entities.Adresa;
 import ro.vavedem.persistence.entities.Primarie;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 /**
- *
  * @author CoruptiaUcide
+ *         <p/>
+ *         Converts Primarie entities to its model and vice versa
  */
 public final class PrimarieServUtil {
 
-    private PrimarieServUtil() {}
+    private PrimarieServUtil() {
+    }
 
     private static final Logger logger = Logger.getLogger(PrimarieServUtil.class);
 
+    public static List<Primarie> convertToEntities(List<PrimarieModel> models) throws VaVedemConversionException {
+        return models.stream()
+                .map(PrimarieServUtil::convertToEntity)
+                .collect(Collectors.toList());
+    }
 
     public static Primarie convertToEntity(PrimarieModel model) throws VaVedemConversionException {
-
         Primarie p = new Primarie();
 
         try {
@@ -38,14 +47,20 @@ public final class PrimarieServUtil {
             p.setTelefon(model.getTelefon());
             p.setPopulatie(model.getPopulatie());
 
-        }catch (NullPointerException npe){
+        } catch (NullPointerException npe) {
             throw new VaVedemConversionException("Null field when convertToEntity.", npe);
         }
+
         return p;
     }
 
-    public static PrimarieModel convertToModel(Primarie entity) throws VaVedemConversionException{
+    public static List<PrimarieModel> convertToModels(List<Primarie> entities) throws VaVedemConversionException {
+        return entities.stream()
+                .map(PrimarieServUtil::convertToModel)
+                .collect(Collectors.toList());
+    }
 
+    public static PrimarieModel convertToModel(Primarie entity) throws VaVedemConversionException {
         PrimarieModel model = new PrimarieModel();
 
         try {
@@ -67,7 +82,7 @@ public final class PrimarieServUtil {
             model.setTelefon(entity.getTelefon());
             model.setPopulatie(entity.getPopulatie());
 
-        }catch (NullPointerException npe){
+        } catch (NullPointerException npe) {
             throw new VaVedemConversionException("Null field when convertToModel.", npe);
         }
 

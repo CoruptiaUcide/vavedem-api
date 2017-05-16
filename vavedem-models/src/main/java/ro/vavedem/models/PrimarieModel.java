@@ -14,16 +14,21 @@ import javax.validation.constraints.NotNull;
 public class PrimarieModel {
 
     private Long id;
+
     @NotNull
     private String nume;
+
     @NotNull
     private Long codFiscal;
-    @NotNull
-    private AdresaModel adresa;
+
     @NotNull
     private String telefon;
+
+    private Long codSiruta;
+
     @NotNull
     private String email;
+
     @NotNull
-    private Long populatie;
+    private AdresaModel adresa;
 }

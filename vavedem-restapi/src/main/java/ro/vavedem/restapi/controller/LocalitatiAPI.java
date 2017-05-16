@@ -13,9 +13,6 @@ import ro.vavedem.exceptions.VaVedemApiException;
 import ro.vavedem.exceptions.VaVedemConversionException;
 import ro.vavedem.exceptions.VaVedemNotFoundException;
 import ro.vavedem.models.LocalitateModel;
-import ro.vavedem.persistence.entities.Localitate;
-import ro.vavedem.persistence.repository.LocalitateSpecRepo;
-import ro.vavedem.persistence.service.LocalitySpecification;
 import ro.vavedem.services.LocalitateConversionService;
 
 import javax.validation.Valid;
@@ -36,14 +33,15 @@ public class LocalitatiAPI {
     @Autowired
     private LocalitateConversionService localitateConversionService;
 
-    @Autowired
-    private LocalitateSpecRepo localitateSpecRepo;
+//    @Autowired
+//    private LocalitateSpecRepo localitateSpecRepo;
 
     @ApiOperation(value = "Intoarce lista cu toate localitatiile.", tags = {"localitate"})
     @RequestMapping(value = {"/localitati"}, method = {RequestMethod.GET})
     @ResponseBody
     public ResponseEntity<List<LocalitateModel>> getLocalitati() {
         logger.info("getting localities");
+
         long startTime = System.currentTimeMillis();
         long startDBCall = System.currentTimeMillis();
         long startConversion = System.currentTimeMillis();
@@ -99,14 +97,14 @@ public class LocalitatiAPI {
         return new ResponseEntity<>(saved, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/localities", method = RequestMethod.GET)
-    public ResponseEntity<List<Localitate>> getSpecs() {
-        List<Localitate> localities = new ArrayList<>();
-
-        localitateSpecRepo.findAll(LocalitySpecification.isCity());
-
-        return new ResponseEntity<>(localities, HttpStatus.OK);
-    }
+//    @RequestMapping(value = "/localities", method = RequestMethod.GET)
+//    public ResponseEntity<List<Localitate>> getSpecs() {
+//        List<Localitate> localities = new ArrayList<>();
+//
+//        localitateSpecRepo.findAll(LocalitySpecification.isCity());
+//
+//        return new ResponseEntity<>(localities, HttpStatus.OK);
+//    }
 
     @ApiOperation(value = "Intoarce detaliile localitatii cu id-ul dat.", tags = {"localitate"})
     @RequestMapping(value = {"/localitati/{id}"}, method = {RequestMethod.GET})

@@ -41,7 +41,6 @@ public class LocalitateConversionService {
         }
 
         return models;
-
     }
 
     public LocalitateModel save(final LocalitateModel model) throws VaVedemApiException {

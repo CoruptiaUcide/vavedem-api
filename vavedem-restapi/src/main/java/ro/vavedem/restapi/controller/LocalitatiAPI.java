@@ -90,7 +90,8 @@ public class LocalitatiAPI {
             }
         }
 
-        return new ResponseEntity<>(saved, HttpStatus.OK);
+        return new ResponseEntity<LocalitateModel>(saved, HttpStatus.CREATED);
+
     }
 
     @ApiOperation(value = "Intoarce detaliile localitatii cu id-ul dat.", tags = {"localitate"})

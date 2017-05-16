@@ -4,6 +4,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import ro.vavedem.exceptions.VaVedemApiException;
 import ro.vavedem.exceptions.VaVedemNotFoundException;
+import ro.vavedem.exceptions.VaVedemNotSuportedException;
 import ro.vavedem.exceptions.VaVedemPersistenceException;
 import ro.vavedem.interfaces.database.Service;
 import ro.vavedem.models.PrimarieModel;
@@ -11,7 +12,6 @@ import ro.vavedem.persistence.entities.Primarie;
 import ro.vavedem.persistence.service.PrimarieService;
 import ro.vavedem.services.util.PrimarieServUtil;
 
-import javax.transaction.NotSupportedException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,13 +63,13 @@ public class PrimarieConversionService implements Service<PrimarieModel> {
     }
 
     @Override
-    public void delete(PrimarieModel model) throws NotSupportedException {
-        throw new NotSupportedException("not implemented");
+    public void delete(PrimarieModel model) throws VaVedemNotSuportedException {
+        throw new VaVedemNotSuportedException("not implemented");
     }
 
     @Override
-    public List<PrimarieModel> findByNume(String nume) throws NotSupportedException {
-        throw new NotSupportedException("not implemented");
+    public List<PrimarieModel> findByNume(String nume) throws VaVedemNotSuportedException {
+        throw new VaVedemNotSuportedException("not implemented");
     }
 }
 

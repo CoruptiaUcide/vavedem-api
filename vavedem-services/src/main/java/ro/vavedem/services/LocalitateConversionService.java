@@ -4,18 +4,19 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import ro.vavedem.exceptions.VaVedemApiException;
 import ro.vavedem.exceptions.VaVedemNotFoundException;
+import ro.vavedem.exceptions.VaVedemNotSuportedException;
 import ro.vavedem.exceptions.VaVedemPersistenceException;
+import ro.vavedem.interfaces.database.Service;
 import ro.vavedem.models.LocalitateModel;
 import ro.vavedem.persistence.entities.Localitate;
 import ro.vavedem.persistence.service.LocalityService;
 import ro.vavedem.services.util.LocalitateServUtil;
 
-import javax.transaction.NotSupportedException;
 import java.util.ArrayList;
 import java.util.List;
 
 @org.springframework.stereotype.Service
-public class LocalitateConversionService {
+public class LocalitateConversionService implements Service<LocalitateModel> {
 
     private static final Logger logger = Logger.getLogger(LocalitateConversionService.class);
 
@@ -55,12 +56,15 @@ public class LocalitateConversionService {
 
     }
 
-    public void delete(LocalitateModel model) throws NotSupportedException {
-        throw new NotSupportedException("not implemented");
+
+    @Override
+    public void delete(LocalitateModel model) throws VaVedemNotSuportedException{
+        throw new VaVedemNotSuportedException("not implemented");
     }
 
-    public List<LocalitateModel> findByNume(String nume) throws NotSupportedException {
-        throw new NotSupportedException("not implemented");
+    @Override
+    public List<LocalitateModel> findByNume(String nume) throws VaVedemNotSuportedException {
+        throw new VaVedemNotSuportedException("not implemented");
     }
 }
 

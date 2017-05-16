@@ -95,7 +95,7 @@ public class PrimariiAPI {
             }
         }
 
-        return new ResponseEntity<PrimarieModel>(saved, HttpStatus.OK);
+        return new ResponseEntity<PrimarieModel>(saved, HttpStatus.CREATED);
     }
 
     @ApiOperation(value = "Intoarce detaliile primarii cu id-ul dat.", tags = {"primarie"})

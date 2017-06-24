@@ -6,7 +6,7 @@ import ro.vavedem.persistence.entities.Primarie;
 
 import java.util.List;
 
-public interface PrimarieCRUDRepository extends CrudRepository<Primarie, Long> {
+public interface PrimarieRepository extends CrudRepository<Primarie, Long> {
 
     Primarie findOne(Long id);
 

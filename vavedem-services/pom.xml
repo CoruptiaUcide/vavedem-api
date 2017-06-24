@@ -44,11 +44,10 @@
           <artifactId>interfaces</artifactId>
       </dependency>
       
-        <dependency>
+      <dependency>
           <groupId>ro.vavedem</groupId>
           <artifactId>persistence</artifactId>
       </dependency>
-    
   </dependencies>
 </project>
 

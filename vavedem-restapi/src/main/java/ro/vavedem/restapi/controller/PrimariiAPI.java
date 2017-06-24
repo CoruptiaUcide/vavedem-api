@@ -42,14 +42,6 @@ public class PrimariiAPI {
 
     private static final Logger logger = Logger.getLogger(PrimariiAPI.class);
 
-    @Autowired
-    private AdresaService adresaService;
-
-    @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
-    private RoleRepository roleRepository;
 
     @Autowired
     private Service<PrimarieModel> primarieService;

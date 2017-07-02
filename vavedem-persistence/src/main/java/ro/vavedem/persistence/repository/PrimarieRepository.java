@@ -1,3 +1,6 @@
+/**
+ * @author CoruptiaUcide
+ */
 package ro.vavedem.persistence.repository;
 
 import org.springframework.data.repository.CrudRepository;

@@ -19,6 +19,7 @@ public class EmailModel {
     private String subject;
     @NotNull
     private String content;
+    private String formular;
 
 
 }

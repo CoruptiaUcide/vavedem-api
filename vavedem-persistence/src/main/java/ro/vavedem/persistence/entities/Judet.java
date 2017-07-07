@@ -1,11 +1,11 @@
 package ro.vavedem.persistence.entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table
@@ -22,8 +22,7 @@ public class Judet implements Serializable {
     @Column
     private String name;
 
-    // TODO fix this - now it's an empty set
-    @JsonBackReference
-    @OneToMany(mappedBy = "judet", cascade = CascadeType.ALL)
-    private Set<Primarie> primarii;
+    @JsonIgnore
+    @OneToMany(mappedBy = "judet")
+    private List<Primarie> primarii;
 }

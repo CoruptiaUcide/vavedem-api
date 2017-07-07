@@ -1,6 +1,5 @@
 package ro.vavedem.persistence.entities;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -53,8 +52,7 @@ public class Primarie implements Serializable {
     @Transient
     private Adresa adresa;
 
-    @JsonManagedReference
-    @ManyToOne(cascade = {CascadeType.ALL})
+    @ManyToOne
     @JoinColumn(name = "id_judet")
     private Judet judet;
 }

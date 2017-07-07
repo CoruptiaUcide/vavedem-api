@@ -5,12 +5,13 @@ server:
 
 spring:
     profiles:
-      active: local-mysql
+      active: dev
     queries:
       users-query: select username, password from users where username=?
       roles-query: select u.username, r.role from users u inner join user_role ur on(u.id=ur.user_id) inner join role r on(ur.role_id=r.id) where u.username=?
     mail:
       apikey: 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
+      formularedir: /home/user/formulare
 ---
 
 # Development profile

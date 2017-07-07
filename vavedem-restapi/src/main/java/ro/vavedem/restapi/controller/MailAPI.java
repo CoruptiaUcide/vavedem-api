@@ -34,14 +34,14 @@ public class MailAPI {
         logger.info("start: trimitere email" );
         try {
             mailService.send(model);
-        } catch (VaVedemApiException e) {
-            if(e instanceof VaVedemEmailException){
-                logger.info(e.getMessage());
+        } catch (VaVedemApiException ex) {
+            if(ex instanceof VaVedemEmailException){
+                logger.info(ex.getMessage());
                 return new ResponseEntity("error send email", HttpStatus.BAD_REQUEST);
             }
         }
 
-        return new ResponseEntity<String>("email sent", HttpStatus.OK);
+        return new ResponseEntity<String>(HttpStatus.OK);
     }
 
 

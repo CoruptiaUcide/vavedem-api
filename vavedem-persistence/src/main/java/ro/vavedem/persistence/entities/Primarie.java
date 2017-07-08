@@ -7,11 +7,11 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
-*
-* @author CoruptiaUcide
-*/
+ * @author CoruptiaUcide
+ */
+
 @Entity
-@Table(name="primarie")
+@Table(name = "primarie")
 @Data
 public class Primarie implements Serializable {
 
@@ -23,6 +23,7 @@ public class Primarie implements Serializable {
     @NotNull
     private String nume;
 
+    // numerical value of length between 6 and 9
     @Column
     @NotNull
     private Long codFiscal;
@@ -31,16 +32,27 @@ public class Primarie implements Serializable {
     @NotNull
     private String telefon;
 
+    // numerical value of fixed length of 6
+    @Column
+    @NotNull
+    private Long codSiruta;
+
     @Column
     @NotNull
     private String email;
 
-    @Column
-    @NotNull
-    private Long populatie;
 
-    @NotNull
-    @OneToOne(cascade={CascadeType.ALL})
-    @JoinColumn(name = "`Id_Adresa`")
+//    @OneToOne(mappedBy = "unitateAdministrativa")
+//    private Localitate localitate;
+
+    // unidirectional Localitate -> Adresa
+//    @NotNull
+//    @OneToOne(cascade = {CascadeType.ALL})
+//    @JoinColumn(name = "id_adresa")
+    @Transient
     private Adresa adresa;
+
+    @ManyToOne
+    @JoinColumn(name = "id_judet")
+    private Judet judet;
 }

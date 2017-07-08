@@ -3,6 +3,7 @@ package ro.vavedem.services.util;
 import org.apache.log4j.Logger;
 import ro.vavedem.exceptions.VaVedemConversionException;
 import ro.vavedem.models.LocalitateModel;
+import ro.vavedem.models.PrimarieModel;
 import ro.vavedem.persistence.entities.Localitate;
 
 import java.util.ArrayList;
@@ -60,6 +61,11 @@ public final class LocalitateServUtil {
             model.setId(entity.getId());
             model.setNume(entity.getNume());
             model.setTip(entity.getTip());
+
+            // at least the id
+            PrimarieModel unitateAdministrativa = new PrimarieModel();
+            unitateAdministrativa.setId(entity.getUnitateAdministrativa().getId());
+            model.setUnitateAdministrativa(unitateAdministrativa);
 
         } catch (NullPointerException npe) {
             throw new VaVedemConversionException("Null field when convertToModel.", npe);

@@ -14,12 +14,19 @@ import javax.validation.constraints.NotNull;
 public class AdresaModel {
 
     private Long id;
+
+    @NotNull
+    private String judet;
+
     @NotNull
     private String localitatea;
+
     @NotNull
     private String strada;
+
     @NotNull
-    private Integer nr;
+    private Integer numar;
+
     @NotNull
     private Long codPostal;
 }

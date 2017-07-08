@@ -15,6 +15,8 @@ import java.util.stream.Collectors;
  *         <p/>
  *         Converts Primarie entities to its model and vice versa
  */
+
+// TODO change this to use a mapper. Example http://www.baeldung.com/entity-to-and-from-dto-for-a-java-spring-application
 public final class PrimarieServUtil {
 
     private PrimarieServUtil() {
@@ -36,16 +38,16 @@ public final class PrimarieServUtil {
             Adresa addrEntity = new Adresa();
 
             addrEntity.setStrada(addrModel.getStrada());
-            addrEntity.setNr(addrModel.getNr());
+            addrEntity.setNumar(addrModel.getNumar());
             addrEntity.setCodPostal(addrModel.getCodPostal());
-            addrEntity.setLocalitatea(addrModel.getLocalitatea());
+            addrEntity.setLocalitate(addrModel.getLocalitatea());
 
             p.setAdresa(addrEntity);
             p.setNume(model.getNume());
             p.setCodFiscal(model.getCodFiscal());
             p.setEmail(model.getEmail());
             p.setTelefon(model.getTelefon());
-            p.setPopulatie(model.getPopulatie());
+            p.setCodSiruta(model.getCodSiruta());
 
         } catch (NullPointerException npe) {
             throw new VaVedemConversionException("Null field when convertToEntity.", npe);
@@ -68,11 +70,11 @@ public final class PrimarieServUtil {
             Adresa addrEntity = entity.getAdresa();
 
             AdresaModel addrModel = new AdresaModel();
-            addrModel.setId(addrEntity.getId());
-            addrModel.setStrada(addrEntity.getStrada());
-            addrModel.setNr(addrEntity.getNr());
-            addrModel.setCodPostal(addrEntity.getCodPostal());
-            addrModel.setLocalitatea(addrEntity.getLocalitatea());
+//            addrModel.setId(addrEntity.getId());
+//            addrModel.setStrada(addrEntity.getStrada());
+//            addrModel.setNumar(addrEntity.getNumar());
+//            addrModel.setCodPostal(addrEntity.getCodPostal());
+//            addrModel.setLocalitatea(addrEntity.getLocalitate());
 
             model.setId(entity.getId());
             model.setAdresa(addrModel);
@@ -80,7 +82,7 @@ public final class PrimarieServUtil {
             model.setCodFiscal(entity.getCodFiscal());
             model.setEmail(entity.getEmail());
             model.setTelefon(entity.getTelefon());
-            model.setPopulatie(entity.getPopulatie());
+            model.setCodSiruta(entity.getCodSiruta());
 
         } catch (NullPointerException npe) {
             throw new VaVedemConversionException("Null field when convertToModel.", npe);

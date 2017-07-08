@@ -3,6 +3,8 @@
  */
 package ro.vavedem.persistence.repository;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
 import ro.vavedem.persistence.entities.Primarie;
 
@@ -14,10 +16,13 @@ public interface PrimarieRepository extends CrudRepository<Primarie, Long> {
 
     List<Primarie> findAll();
 
+    List<Primarie> findAll(Pageable pageable);
+
     Primarie save(Primarie primarie);
 
     void delete(Primarie primarie);
 
     List<Primarie> findByNume(String nume);
 
+    Page<Primarie> findByJudetCode(String code, Pageable pageable);
 }

@@ -13,14 +13,17 @@ import java.io.Serializable;
 @Table
 @Data
 public class Adresa implements Serializable {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column
     @NotNull
-    private String localitatea;
+    private String judet;
+
+    @Column
+    @NotNull
+    private String localitate;
 
     @Column
     @NotNull
@@ -28,7 +31,7 @@ public class Adresa implements Serializable {
 
     @Column
     @NotNull
-    private Integer nr;
+    private Integer numar;
 
     @Column
     @NotNull

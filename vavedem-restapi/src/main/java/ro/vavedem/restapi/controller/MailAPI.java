@@ -15,7 +15,6 @@ import ro.vavedem.models.EmailModel;
 
 import javax.validation.Valid;
 
-
 /**
  * @author CoruptiaUcide
  */
@@ -27,9 +26,9 @@ public class MailAPI {
     @Autowired
     private MailService<EmailModel> mailService;
 
-
     @ApiOperation(value = "Trimite email.", tags = {"email"})
-    @RequestMapping(value = {"/mail"}, method = {RequestMethod.POST}, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = {"/mail"}, method = {RequestMethod.POST}, produces = MediaType.APPLICATION_JSON_VALUE,
+            consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<String> sendEmail (@RequestBody @Valid EmailModel model) {
         logger.info("start: trimitere email" );

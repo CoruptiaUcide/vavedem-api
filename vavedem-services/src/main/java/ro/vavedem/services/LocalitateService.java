@@ -42,7 +42,6 @@ public class LocalitateService implements Service<LocalitateModel> {
         }
 
         return models;
-
     }
 
     public LocalitateModel save(final LocalitateModel model) throws VaVedemApiException {

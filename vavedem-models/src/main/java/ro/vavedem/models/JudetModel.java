@@ -7,7 +7,7 @@ import lombok.Data;
  */
 
 @Data
-public class JudetDTO {
+public class JudetModel {
     private Long id;
     private String code;
     private String name;

@@ -30,5 +30,5 @@ public class PrimarieModel {
     @NotNull
     private AdresaModel adresa;
 
-    private JudetDTO judet;
+    private JudetModel judet;
 }

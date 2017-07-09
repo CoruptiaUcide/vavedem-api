@@ -1,8 +1,8 @@
 package ro.vavedem.services;
 
 import com.sendgrid.*;
-
 import org.apache.commons.lang.StringUtils;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import ro.vavedem.exceptions.VaVedemEmailException;
@@ -18,7 +18,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
-import org.apache.log4j.Logger;
 
 /**
  * @author CoruptiaUcide
@@ -41,7 +40,6 @@ public class EmailService implements MailService<EmailModel> {
     private String formulareDir;
 
     public void send(EmailModel model) throws VaVedemEmailException {
-
         Email from = new Email(model.getFrom());
         String subject = model.getSubject();
         Email to = new Email(model.getTo());
@@ -52,7 +50,7 @@ public class EmailService implements MailService<EmailModel> {
         final String formular = model.getFormular();
         final String fileName = fileNames.get(formular);
 
-        if(StringUtils.isBlank(fileName) && StringUtils.isNotBlank(formular)){
+        if (StringUtils.isBlank(fileName) && StringUtils.isNotBlank(formular)) {
             logger.error("[VaVedem] :  formularul : " + formular + " nu a fost gasit pe disk. ");
             throw new VaVedemEmailException("Eroare la trimiterea emailului.");
         }
@@ -89,13 +87,18 @@ public class EmailService implements MailService<EmailModel> {
 
     private static Map<String, String> listFormulare(String directory) {
         Map<String, String> files = new HashMap<String, String>();
+
         try (DirectoryStream<Path> directoryStream = Files.newDirectoryStream(Paths.get(directory))) {
             for (Path path : directoryStream) {
-
                 files.put(path.getFileName().toString(), path.toAbsolutePath().toString());
+                // TODO change sout to logger
                 System.out.println(path.toAbsolutePath().toString());
             }
-        } catch (IOException ex) {}
+        } catch (IOException ex) {
+            logger.error(ex);
+            throw new VaVedemEmailException("Eroare la citire formular");
+        }
+
         return files;
     }
 

@@ -22,7 +22,7 @@ import ro.vavedem.exceptions.VaVedemNotFoundException;
 import ro.vavedem.interfaces.database.Service;
 import ro.vavedem.models.CountyCode;
 import ro.vavedem.models.PrimarieModel;
-import ro.vavedem.models.SearchCityHallParameters;
+import ro.vavedem.parameters.SearchCityHallParameters;
 import ro.vavedem.persistence.entities.Primarie;
 import ro.vavedem.persistence.repository.CountyCRUDRepository;
 import ro.vavedem.persistence.repository.PrimarieRepository;

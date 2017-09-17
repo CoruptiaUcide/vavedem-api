@@ -1,4 +1,4 @@
-package ro.vavedem.models;
+package ro.vavedem.parameters;
 
 import lombok.Data;
 

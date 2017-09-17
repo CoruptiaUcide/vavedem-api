@@ -9,8 +9,6 @@ import javax.validation.constraints.NotNull;
  */
 @Data
 public class EmailModel {
-
-
     @NotNull
     private String from;
     @NotNull
@@ -20,6 +18,4 @@ public class EmailModel {
     @NotNull
     private String content;
     private String formular;
-
-
 }

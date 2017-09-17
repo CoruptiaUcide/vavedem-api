@@ -7,7 +7,7 @@ import ro.vavedem.persistence.entities.Judet;
 
 import java.util.List;
 
-public interface CountyCRUDRepository extends CrudRepository<Judet, Long>{
+public interface CountyCRUDRepository extends CrudRepository<Judet, Long> {
 
     List<Judet> findAll();
 

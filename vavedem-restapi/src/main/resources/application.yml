@@ -5,13 +5,19 @@ server:
 
 spring:
     profiles:
-      active: dev
+      active: local-mysql
     queries:
       users-query: select username, password from users where username=?
       roles-query: select u.username, r.role from users u inner join user_role ur on(u.id=ur.user_id) inner join role r on(ur.role_id=r.id) where u.username=?
     mail:
       apikey: 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
       formularedir: /home/user/formulare
+    documents:
+      rootServerLocation: /home/coruptiaUcide/documents
+      templatesServerRelativeLocation: /templates
+      uploadedServerRelativeLocation: /uploads
+
+
 ---
 
 # Development profile
@@ -95,6 +101,8 @@ spring:
             hibernate:
                 temp:
                     use_jdbc_metadata_defaults: false
-        database-platform: org.hibernate.dialect.PostgreSQLDialect
+        database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     mail:
         apikey: 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
+    documents:
+        rootServerLocation: /home/bogdan/Documents/work/projects/Transparenta/API/vavedem/documents

@@ -42,13 +42,6 @@ public class Primarie implements Serializable {
     private String email;
 
 
-//    @OneToOne(mappedBy = "unitateAdministrativa")
-//    private Localitate localitate;
-
-    // unidirectional Localitate -> Adresa
-//    @NotNull
-//    @OneToOne(cascade = {CascadeType.ALL})
-//    @JoinColumn(name = "id_adresa")
     @Transient
     private Adresa adresa;
 

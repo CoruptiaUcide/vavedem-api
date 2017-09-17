@@ -10,7 +10,7 @@ public interface RequestDocumentRepository extends CrudRepository<RequestDocumen
 
     Page<RequestDocument> findAll(Pageable pageable);
 
-    RequestDocument findByFilenameAndFileType(String filename, String fileType);
+    RequestDocument findByFilenameAndExtension(String filename, String extension);
 
     Page<ProjWithFilename> findByFilenameContains(String filename, Pageable pageable);
 
@@ -18,7 +18,7 @@ public interface RequestDocumentRepository extends CrudRepository<RequestDocumen
 
     Page<RequestDocument> findByFilename(String filename, Pageable pageable);
 
-    Page<RequestDocument> findByFilenameAndFileType(String filename, String fileType, Pageable pageable);
+    Page<RequestDocument> findByFilenameAndExtension(String filename, String extension, Pageable pageable);
 
     Page<RequestDocument> findByServerLocation(String serverLocation, Pageable pageable);
 }

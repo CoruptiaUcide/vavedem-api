@@ -21,7 +21,10 @@ public class RequestDocument {
     private String filename;
 
     @Column
-    private String fileType;
+    private String extension;
+
+    @Column
+    private String fullName;
 
     @Column
     private String serverLocation;

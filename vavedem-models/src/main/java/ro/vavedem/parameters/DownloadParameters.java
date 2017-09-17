@@ -5,5 +5,5 @@ import lombok.Data;
 @Data
 public class DownloadParameters {
     private String fileName;
-    private String fileType;
+    private String extension;
 }

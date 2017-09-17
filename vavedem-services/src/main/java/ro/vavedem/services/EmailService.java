@@ -86,7 +86,7 @@ public class EmailService implements MailService<EmailModel> {
 
 
     private static Map<String, String> listFormulare(String directory) {
-        Map<String, String> files = new HashMap<String, String>();
+        Map<String, String> files = new HashMap<>();
 
         try (DirectoryStream<Path> directoryStream = Files.newDirectoryStream(Paths.get(directory))) {
             for (Path path : directoryStream) {

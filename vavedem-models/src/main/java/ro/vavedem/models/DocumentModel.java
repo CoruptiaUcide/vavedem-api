@@ -10,7 +10,7 @@ public class DocumentModel {
 
     private String filename;
 
-    private String fileType;
+    private String extension;
 
     private String serverLocation;
 

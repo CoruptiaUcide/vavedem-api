@@ -101,6 +101,8 @@ spring:
             hibernate:
                 temp:
                     use_jdbc_metadata_defaults: false
-        database-platform: org.hibernate.dialect.PostgreSQLDialect
+        database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     mail:
         apikey: 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
+    documents:
+        rootServerLocation: /home/bogdan/Documents/work/projects/Transparenta/API/vavedem/documents

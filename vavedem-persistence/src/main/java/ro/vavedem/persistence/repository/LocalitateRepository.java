@@ -14,6 +14,6 @@ public interface LocalitateRepository extends CrudRepository<Localitate, Long> {
 
     List<Localitate> findAll();
 
-    Localitate save(Localitate primarie);
+    Localitate save(Localitate localitate);
 
 }

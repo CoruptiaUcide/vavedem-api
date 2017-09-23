@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import ro.vavedem.constants.AppUtils;
 import ro.vavedem.parameters.DownloadParameters;
 import ro.vavedem.parameters.SearchDocumentParameters;
 import ro.vavedem.parameters.StoringMetadata;
@@ -27,11 +28,13 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.security.Principal;
-import java.time.LocalDate;
 import java.util.Arrays;
 
 /**
  * This controller will handle the documents that are sent back and fourth between server and client
+ *
+ * Docs: https://docs.google.com/document/d/1EmxJhC_cHaYOJL0rI0LWBt60tK1QT7fMqoHUKaONxTw/edit
+ *
  */
 
 @Controller
@@ -149,10 +152,11 @@ public class RequestDocumentController {
         RequestDocument documentMetadata = storageService.extractMetadata(file);
         StoringMetadata storingMetadata = new StoringMetadata();
         storingMetadata.setStoragePath(rootServerDocumentsLocation + templatesServerRelativeLocation + SLASH);
-        storingMetadata.setTimestamp(LocalDate.now().toString());
+        storingMetadata.setTimestamp(System.currentTimeMillis());
+        storingMetadata.setDate(AppUtils.getFormattedDateForDocs());
         storingMetadata.setFileCategory("template");
 
-        boolean stored = storageService.store(Arrays.asList(file), documentMetadata, storingMetadata);
+        boolean stored = storageService.storeRequestDocument(Arrays.asList(file), documentMetadata, storingMetadata);
 
         if (stored) {
             // save it to the DB
@@ -160,8 +164,8 @@ public class RequestDocumentController {
             requestDocument.setFilename(documentMetadata.getFilename());
             requestDocument.setExtension(documentMetadata.getExtension());
             requestDocument.setServerLocation(templatesServerRelativeLocation);
-            requestDocument.setDocumentCategory("request");
-            requestDocument.setDocumentType("upload");
+            requestDocument.setDocumentCategory("template");
+            requestDocument.setDocumentType("template");
             requestDocument.setFullName(documentMetadata.getFullName());
 
             RequestDocument saved = documentRepository.save(requestDocument);
@@ -192,19 +196,21 @@ public class RequestDocumentController {
         RequestDocument documentMetadata = storageService.extractMetadata(file);
         StoringMetadata storingMetadata = new StoringMetadata();
         storingMetadata.setStoragePath(rootServerDocumentsLocation + uploadedServerRelativeLocation + SLASH);
-        storingMetadata.setTimestamp(LocalDate.now().toString());
+        storingMetadata.setTimestamp(System.currentTimeMillis());
+        storingMetadata.setDate(AppUtils.getFormattedDateForDocs());
         storingMetadata.setFileCategory("request");
 
-        boolean stored = storageService.store(Arrays.asList(file), documentMetadata, storingMetadata);
+        boolean stored = storageService.storeRequestDocument(Arrays.asList(file), documentMetadata, storingMetadata);
 
         if (stored) {
             // save it to the DB
             RequestDocument requestDocument = new RequestDocument();
-            requestDocument.setFilename(file.getName());
-            requestDocument.setExtension(file.getContentType());
-            requestDocument.setServerLocation(UPLOADS);
+            requestDocument.setFilename(documentMetadata.getFilename());
+            requestDocument.setExtension(documentMetadata.getExtension());
+            requestDocument.setServerLocation(uploadedServerRelativeLocation);
             requestDocument.setDocumentCategory("request");
             requestDocument.setDocumentType("upload");
+            requestDocument.setFullName(documentMetadata.getFullName());
 
             RequestDocument saved = documentRepository.save(requestDocument);
 
@@ -212,7 +218,6 @@ public class RequestDocumentController {
                 logger.warn("document not saved to DB");
             }
         }
-
         return new ResponseEntity("Successfully uploaded - " + file, HttpStatus.OK);
     }
 }

@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
+import ro.vavedem.constants.AppConstants;
 import ro.vavedem.parameters.StoringMetadata;
 import ro.vavedem.persistence.entities.RequestDocument;
 
@@ -33,7 +34,7 @@ public class StorageServiceImpl implements StorageService {
      * @param files a list files that will be uploaded
      */
     @Override
-    public boolean store(List<MultipartFile> files, RequestDocument requestDocumentMetadata, StoringMetadata storingMetadata) {
+    public boolean store(List<MultipartFile> files, Path path) {
         try {
             for (MultipartFile file : files) {
                 if (file.isEmpty()) {
@@ -42,12 +43,6 @@ public class StorageServiceImpl implements StorageService {
 
                 byte[] bytes = file.getBytes();
 
-                Path path = Paths.get(storingMetadata.getStoragePath() +
-                        (!StringUtils.isEmpty(storingMetadata.getCountyCode()) ? storingMetadata.getCountyCode() : "") +
-                        (!StringUtils.isEmpty(storingMetadata.getCityHallId()) ? storingMetadata.getCityHallId() : "") +
-                        requestDocumentMetadata.getFilename() +
-                        storingMetadata.getTimestamp() +
-                        requestDocumentMetadata.getExtension());
                 Files.write(path, bytes);
             }
         } catch (IOException ioe) {
@@ -57,6 +52,23 @@ public class StorageServiceImpl implements StorageService {
         }
 
         return true;
+    }
+
+    @Override
+    public boolean storeRequestDocument(List<MultipartFile> file, RequestDocument requestDocument, StoringMetadata storingMetadata) {
+        Path path = Paths.get(storingMetadata.getStoragePath() +
+                (!StringUtils.isEmpty(storingMetadata.getCountyCode()) ? storingMetadata.getCountyCode() : "NONE") +
+                AppConstants.DASH +
+                (!StringUtils.isEmpty(storingMetadata.getCityHallId()) ? storingMetadata.getCityHallId() : "0000") +
+                AppConstants.DASH +
+                requestDocument.getFilename() +
+                AppConstants.DASH +
+                storingMetadata.getDate() +
+                requestDocument.getExtension());
+
+        logger.info("Stored path:" + path.toString());
+
+        return store(file, path);
     }
 
     /**

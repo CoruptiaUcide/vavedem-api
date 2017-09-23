@@ -33,8 +33,8 @@ import java.security.Principal;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static ro.vavedem.restapi.constants.ApiMessageConstants.ASIGURATIVA_CA_DATELE_INTRODUSE_SUNT_CORECTE;
-import static ro.vavedem.restapi.constants.ApiMessageConstants.EROARE_INTERNA_INCERCATI_MAI_TARZIU;
+import static ro.vavedem.restapi.constants.AppConstantsAndUtils.ASIGURATIVA_CA_DATELE_INTRODUSE_SUNT_CORECTE;
+import static ro.vavedem.restapi.constants.AppConstantsAndUtils.EROARE_INTERNA_INCERCATI_MAI_TARZIU;
 
 /**
  * Controller for both public and app related info about localities

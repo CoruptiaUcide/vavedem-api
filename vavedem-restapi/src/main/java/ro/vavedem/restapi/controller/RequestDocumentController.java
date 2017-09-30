@@ -13,10 +13,15 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import ro.vavedem.constants.AppUtils;
 import ro.vavedem.parameters.DownloadParameters;
+import ro.vavedem.parameters.OfficialDocumentParameters;
 import ro.vavedem.parameters.SearchDocumentParameters;
 import ro.vavedem.parameters.StoringMetadata;
+import ro.vavedem.persistence.entities.OfficialRequest;
+import ro.vavedem.persistence.entities.Primarie;
 import ro.vavedem.persistence.entities.RequestDocument;
+import ro.vavedem.persistence.entities.UserAccount;
 import ro.vavedem.persistence.repository.LocalitateRepository;
+import ro.vavedem.persistence.repository.OfficialRequestRepository;
 import ro.vavedem.persistence.repository.PrimarieRepository;
 import ro.vavedem.persistence.repository.RequestDocumentRepository;
 import ro.vavedem.projections.ProjWithFilename;
@@ -64,6 +69,9 @@ public class RequestDocumentController {
     private RequestDocumentRepository documentRepository;
 
     @Autowired
+    private OfficialRequestRepository officialRequestRepository;
+
+    @Autowired
     private StorageService storageService;
 
     @Autowired
@@ -80,6 +88,14 @@ public class RequestDocumentController {
     @ResponseBody
     public Page<ProjWithFilename> getTemplates(Pageable pageable) {
         return documentRepository.findByFilenameContainsAndServerLocation(EMPTY_STRING, templatesServerRelativeLocation, pageable);
+    }
+
+    @RequestMapping("/getOfficialRequestsByInstitution")
+    @ResponseBody
+    public Page<OfficialRequest> getRequest(@ModelAttribute OfficialDocumentParameters parameters, Pageable pageable) {
+        Primarie primarie = primarieRepository.findOne(parameters.getInstitutionId());
+
+        return officialRequestRepository.findByInstitution(primarie, pageable);
     }
 
     /**

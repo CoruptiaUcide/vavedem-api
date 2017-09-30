@@ -1,11 +1,9 @@
 package ro.vavedem.persistence.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 
 @Entity
 @Table
@@ -21,8 +19,4 @@ public class Judet implements Serializable {
 
     @Column
     private String name;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "judet")
-    private List<Primarie> primarii;
 }

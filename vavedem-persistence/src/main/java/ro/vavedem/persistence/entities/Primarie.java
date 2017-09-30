@@ -1,5 +1,6 @@
 package ro.vavedem.persistence.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -47,5 +48,6 @@ public class Primarie implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "id_judet")
+    @JsonBackReference
     private Judet judet;
 }

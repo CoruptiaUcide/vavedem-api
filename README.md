@@ -28,7 +28,6 @@
     <li><code> database=weesee</code></li>
 </ul>
 
-
 <ul>
     <li><code># cd va-vedem-api </code></li>
     <li><code># mvn clean install </code></li>

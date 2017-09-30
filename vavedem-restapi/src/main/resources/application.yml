@@ -106,3 +106,32 @@ spring:
         apikey: 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
     documents:
         rootServerLocation: /home/bogdan/Documents/work/projects/Transparenta/API/vavedem/documents
+
+---
+# Test profile
+
+server:
+    port: 8081
+
+spring:
+    profile: virtualbox
+    main:
+        web-environment: false
+    datasource:
+        url: jdbc:mysql://localhost:3306/weesee
+        username: root
+        password:
+        driver-class-name: com.mysql.jdbc.Driver
+        max-active: 5
+        max-pool: 10
+        max-idle: 0
+    jpa:
+        properties:
+            hibernate:
+                temp:
+                    use_jdbc_metadata_defaults: false
+        database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    mail:
+        apikey: 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
+    documents:
+        rootServerLocation: /home/work/data/documents

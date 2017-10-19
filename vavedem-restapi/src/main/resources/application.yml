@@ -1,4 +1,6 @@
 # Properties applied for any profile
+# Extract here the common parts from all profiles and override only the neccesary parts
+# Try to update all the profiles if you made a required change to your profile
 
 server:
     port: 8080
@@ -10,82 +12,50 @@ spring:
       users-query: select username, password from users where username=?
       roles-query: select u.username, r.role from users u inner join user_role ur on(u.id=ur.user_id) inner join role r on(ur.role_id=r.id) where u.username=?
     mail:
-      apikey: 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
+      apikey:
       formularedir: /home/user/formulare
     documents:
       rootServerLocation: /home/coruptiaUcide/documents
       templatesServerRelativeLocation: /templates
       uploadedServerRelativeLocation: /uploads
 
-
 ---
 
-# Development profile
-
-spring:
-    profiles: dev
-    main:
-        web-environment: false
-    datasource:
-        url: jdbc:postgresql://localhost:5432/postgres?currentSchema=public
-        username: postgres
-        password: postgres
-        driver-class-name: org.postgresql.Driver
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-        max-active: 5
-        max-pool: 10
-        max-idle: 0
-    jpa:
-        hibernate:
-            ddl-auto: update  # this will create the DB schema locally
-        properties:   # this needs to be placed here because that is how some of the Hibernate props are read
-            hibernate:
-                temp:
-                    use_jdbc_metadata_defaults: false
-        database-platform: org.hibernate.dialect.PostgreSQLDialect
-    queries:
-        users-query: select username, password from users where username=?
-        roles-query: select u.username, r.role from users u inner join user_role ur on(u.id=ur.user_id) inner join role r on(ur.role_id=r.id) where u.username=?
-    mail:
-        apikey: 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
----
-
-# Heroku profile - current test
-
-server:
-    port: 8090
-
-spring:
-    profile: heroku
-    main:
-        web-environment: false
-    datasource:
-        url: jdbc:postgresql://ec2-54-163-228-58.compute-1.amazonaws.com:5432/dfvo2f9it4pmk9?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory
-        username: ucokaucbriaged
-        password:
-        driver-class-name: org.postgresql.Driver
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-        max-active: 5
-        max-pool: 10
-        max-idle: 0
-    jpa:
-        properties:       # do not user ddl-auto: create/update on a shared DB
-            hibernate:
-                temp:
-                    use_jdbc_metadata_defaults: false
-        database-platform: org.hibernate.dialect.PostgreSQLDialect
-    mail:
-        apikey: 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
-
-
----
-# Test profile
+# Local development profile
 
 server:
     port: 8090
 
 spring:
     profile: local-mysql
+    main:
+        web-environment: false
+    datasource:
+        url: jdbc:mysql://localhost:3306/weesee
+        username: root
+        password: <local-password>
+        driver-class-name: com.mysql.jdbc.Driver
+        max-active: 5
+        max-pool: 10
+        max-idle: 0
+    jpa:
+        properties:
+            hibernate:
+                temp:
+                    use_jdbc_metadata_defaults: false
+        database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    documents:
+        rootServerLocation: /<project-path>/vavedem/documents
+
+---
+
+# Profile used in the test environment
+
+server:
+    port: 8090
+
+spring:
+    profile: test-mysql
     main:
         web-environment: false
     datasource:
@@ -102,7 +72,5 @@ spring:
                 temp:
                     use_jdbc_metadata_defaults: false
         database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
-    mail:
-        apikey: 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
     documents:
-        rootServerLocation: /home/bogdan/Documents/work/projects/Transparenta/API/vavedem/documents
+        rootServerLocation: /opt/apps/weesee/data/documents

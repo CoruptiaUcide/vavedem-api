@@ -19,7 +19,6 @@ import ro.vavedem.parameters.StoringMetadata;
 import ro.vavedem.persistence.entities.OfficialRequest;
 import ro.vavedem.persistence.entities.Primarie;
 import ro.vavedem.persistence.entities.RequestDocument;
-import ro.vavedem.persistence.entities.UserAccount;
 import ro.vavedem.persistence.repository.LocalitateRepository;
 import ro.vavedem.persistence.repository.OfficialRequestRepository;
 import ro.vavedem.persistence.repository.PrimarieRepository;
@@ -113,7 +112,7 @@ public class RequestDocumentController {
     public void downloadTemplate(@ModelAttribute DownloadParameters downloadParameters, HttpServletResponse response) {
         // rootServerLocation + /templates + filename + . + fileType
         if (StringUtils.isEmpty(downloadParameters) || StringUtils.isEmpty(downloadParameters.getFileName())) {
-            logger.debug("No filename or fileType to /downloadTemplate");
+            logger.info("No template name provided to download");
 
             return;
         }
@@ -121,13 +120,14 @@ public class RequestDocumentController {
         // by default, the templates will be in .doc format
         if (StringUtils.isEmpty(downloadParameters.getExtension())) {
             downloadParameters.setExtension(DEFAULT_FILE_TYPE);
+            logger.info("Falling to the default extension: " + DEFAULT_FILE_TYPE);
         }
 
         final String requestedFile = downloadParameters.getFileName() + DOT + downloadParameters.getExtension();
 
         // check if it exist in the DB first
         if (null == documentRepository.findByFilenameAndExtension(downloadParameters.getFileName(), downloadParameters.getExtension())) {
-            logger.debug("File " + requestedFile + " was not found in the database");
+            logger.info("The file " + requestedFile + " was not found in the database");
 
             return;
         }
@@ -148,7 +148,7 @@ public class RequestDocumentController {
                 logger.error(Arrays.toString(e.getStackTrace()));
             }
         } else {
-            logger.debug("The requested file: " + file.toString() + " was not found or it is a directory");
+            logger.info("The requested file: " + file.toString() + " was not found or it is a directory");
         }
     }
 

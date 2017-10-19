@@ -5,10 +5,10 @@
 
 
 <ul>
-    <li><code><a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">jdk</a></code> incepand cu versiunea 7</li>
+    <li><code><a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">jdk</a></code> Java 7 or above</li>
     <li><code><a href="https://maven.apache.org/index.html">maven</a></code> - java build tool</li>
     <li><code><a href="https://tomcat.apache.org/download-80.cgi">apache tomcat</a></code> - webserver </li>
-    <li><code><a href="https://dev.mysql.com/downloads/">postgres</a>MySql</li>
+    <li><code><a href="https://dev.mysql.com/downloads/">MySql</a> MySql as DB</li>
 </ul>
 
 
@@ -32,6 +32,11 @@
     <li><code># cd va-vedem-api </code></li>
     <li><code># mvn clean install </code></li>
     <li><code># cp vavedem-restapi/target/vavedem.war {tomcat_home}/webapps/ </code></li>
+</ul>
+
+<ul>
+    <li>Create a document root folder locally and copy the location in application.yml(restapi) under rootServerLocation </li>
+    <li>Create two more folders relative to the chosen root: templates and uploads</li>
 </ul>
 
 
